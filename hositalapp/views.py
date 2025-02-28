@@ -22,3 +22,7 @@ def doctors(request):
 
 def contact(request):
     return render(request,'contact.html')
+
+
+def appointment(request):
+    return render(request,'appointment.html')
