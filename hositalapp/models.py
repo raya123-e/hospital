@@ -43,3 +43,23 @@ class ward(models.Model):
     def __str__(self):
         return self.name
 
+class Appointment(models.Model):
+    name = models.CharField(max_length=24)
+    email = models.EmailField()
+    phone = models.CharField(max_length=24)
+    date = models.DateTimeField()
+    department = models.CharField(max_length=24)
+    doctor = models.CharField(max_length=24)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class Contact(models.Model):
+    name = models.CharField(max_length=24)
+    email = models.EmailField()
+    subject = models.CharField(max_length=24)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name+ " " +self.email
