@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from hositalapp.models import *
 
 # Create your views here.
@@ -60,3 +60,28 @@ def delete(request,id):
     deletedappointment=Appointment.objects.get(id=id)
     deletedappointment.delete()
     return redirect('/show')
+
+def sow(request):
+    po=Contact.objects.all()
+    return render(request,'sow.html',{'all':po})
+
+def delete(request,id):
+    deletedcontact=Contact.objects.get(id=id)
+    deletedcontact.delete()
+    return redirect('/sow')
+
+
+def edit(request,id):
+    editinfo = get_object_or_404(Appointment,id=id)
+    if request.method == 'POST':
+        editinfo.name == request.POST.get('name')
+        editinfo.email == request.POST.get('email')
+        editinfo.phone == request.POST.get('phone')
+        editinfo.date == request.POST.get('date')
+        editinfo.department == request.POST.get('department')
+        editinfo.doctor == request.POST.get('doctor')
+        editinfo.message == request.POST.get('message')
+        editinfo.save()
+        return redirect('/show')
+    else:
+        return render(request,'edit.html',{'editinfo':editinfo})
