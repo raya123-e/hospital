@@ -61,14 +61,8 @@ def delete(request,id):
     deletedappointment.delete()
     return redirect('/show')
 
-def sow(request):
-    po=Contact.objects.all()
-    return render(request,'sow.html',{'all':po})
 
-def delete(request,id):
-    deletedcontact=Contact.objects.get(id=id)
-    deletedcontact.delete()
-    return redirect('/sow')
+
 
 
 def edit(request,id):
@@ -84,4 +78,11 @@ def edit(request,id):
         editinfo.save()
         return redirect('/show')
     else:
-        return render(request,'edit.html',{'editinfo':editinfo})
+
+       return render(request,'edit.html',{'editinfo':editinfo})
+
+def register(request):
+    return render(request,'register.html')
+
+def login_view(request):
+    return render(request,'login.html')
