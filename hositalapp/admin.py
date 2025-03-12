@@ -9,5 +9,6 @@ admin.site.register(staff)
 admin.site.register(ward)
 admin.site.register(Appointment)
 admin.site.register(Contact)
+admin.site.register(Transaction)
 
 
